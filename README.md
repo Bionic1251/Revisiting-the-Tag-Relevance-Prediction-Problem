@@ -13,7 +13,7 @@ This work is licensed under the Creative Commons Attribution-NonCommercial 3.0 L
 - The algorithm, which generates features will become available soon
 
 
-## Hot to run
+## How to run
 
 
 - R-script (Vig et al.): `./r/my_run_tenfolds.R`
