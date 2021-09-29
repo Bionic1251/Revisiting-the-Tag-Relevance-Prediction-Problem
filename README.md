@@ -4,9 +4,9 @@
 
 This repository contains data pipeline to run experiments described in [Vig et al., 2012] and [Kotkov et al., 2021]. The pipeline takes item and tag data as input and produces scores that indicate degrees, to which tags apply to items. The pipeline consists of the following steps:
 * Raw data transformation – converting raw data to a suitable format with `./data/make_interim_pickle_files.py`
-* Feature generation – extracting features from the converted data with `./features/build_features.py` and `build_features.R`
+* Feature generation – extracting features from the converted data with `./features/build_features.py` and `./models/r/build_features.R`
 * Data split – preparing data for evaluation with `./data/make_10folds.py`
-* Prediction – predicting scores based on extracted features with `run_tenfolds.R` and `./models/run_tenfolds.py`
+* Prediction – predicting scores based on extracted features with `./models/r/run_tenfolds.R` and `./models/run_tenfolds.py`
 * Evaluation – measuring performance of algorithms with `./models/calcl_mae_for_folds.py`
 
 The dataset is available via the following link: (coming soon)
