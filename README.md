@@ -9,6 +9,7 @@ This repository contains data pipeline to run experiments described in [Vig et a
 * Prediction – predicting scores based on extracted features with `run_tenfolds.R` and `./models/run_tenfolds.py`
 * Evaluation – measuring performance of algorithms with `./models/calcl_mae_for_folds.py`
 
+The dataset is available via the following link: (coming soon)
 
 ## Usage License
 
