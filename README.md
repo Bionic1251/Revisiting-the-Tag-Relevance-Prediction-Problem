@@ -107,7 +107,7 @@ mainanswers.txt -> build_features -> Input files for R -> dump for r and Pytorch
 
 
 ## Acknowledgements
-We would like to thank organizations that supported publication of this repository: the Academy of Finland, grant #309495 (the LibDat project) and the Academy of Finland Flagship programme: Finnish Center for Artificial Intelligence FCAI.
+We would like to thank GroupLens for providing us with the dataset and code for the regression algorithm [Vig et al., 2012]. We would also like to thank organizations that supported publication of this dataset: the Academy of Finland, grant #309495 (the LibDat project) and the Academy of Finland Flagship programme: Finnish Center for Artificial Intelligence FCAI.
 
 --------
 
