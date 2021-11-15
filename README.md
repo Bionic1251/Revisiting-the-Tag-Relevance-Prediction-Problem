@@ -74,6 +74,19 @@ data/raw_example
 mainanswers.txt -> build_features -> Input files for R -> dump for r and Pytorch models
 ```
 
+## Generating Tag Genome scores
+To generate Tag Genome scores, run the following scripts:
+1. `src/run.sh`
+2. `src/models/r/generate_features_for_scores.R`
+3. `src/models/r/generate_scores.R`
+4. `src/models/generate_scores.py`
+
+Scripts:
+* `src/models/r/generate_features_for_scores.R` – generates features for prediction algorithms. The script requires the file `data/processed/movie_ids.csv` (containing one field: `movie_id`), which contains ids of items to included in the Tag Genome scores. 
+* `src/models/r/generate_scores.R` – generates scores with the method presented in [Vig et al., 2012]
+* `src/models/generate_scores.py` – generates scores with TagDL [Kotkov et al., 2021]
+
+
 ## Project Organization
 
     ├── LICENSE
