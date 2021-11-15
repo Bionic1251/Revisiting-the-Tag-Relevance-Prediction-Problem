@@ -82,7 +82,7 @@ To generate Tag Genome scores, run the following scripts:
 4. `src/models/generate_scores.py`
 
 Scripts:
-* `src/models/r/generate_features_for_scores.R` – generates features for prediction algorithms. The script requires the file `data/processed/movie_ids.csv` (containing one field: `movie_id`), which contains ids of items to included in the Tag Genome scores. 
+* `src/models/r/generate_features_for_scores.R` – generates features for prediction algorithms. The script requires the file `data/processed/movie_ids.csv`, which contains ids of items to included in the Tag Genome scores. The file contains ids in the csv format in the field: `movie_id`.
 * `src/models/r/generate_scores.R` – generates scores with the method presented in [Vig et al., 2012]
 * `src/models/generate_scores.py` – generates scores with TagDL [Kotkov et al., 2021]
 
