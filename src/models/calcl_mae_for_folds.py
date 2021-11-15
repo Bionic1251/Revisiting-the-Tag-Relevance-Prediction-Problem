@@ -30,7 +30,7 @@ def calc_mae_for_ten_folds():
             assert y_true.shape == predictions.shape
             mae_r = fn_mae(r_predictions, y_true)
             mae = fn_mae(predictions, y_true)
-            perf_msg = f"Fold {i}; MAE PyTorch (TagDL): {mae:1.3f}; MAE R: {mae_r:1.3f};"
+            perf_msg = "MAE PyTorch: {0:1.3f}; R MAE: {1:1.3f}; PyTorch is better: {2:}".format(mae, mae_r, mae < mae_r)
             logger.info(perf_msg)
             f.write(perf_msg + '\n')
     logger.info(f"Save performance results for 10 folds into {save_path}")

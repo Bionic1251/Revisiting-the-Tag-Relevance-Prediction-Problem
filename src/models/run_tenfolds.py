@@ -20,10 +20,6 @@ from src.models.train_pytorch_settings import *
 from src.models.tagdl_data import *
 
 
-fpath_data_survey = "movielens-tagnav/r/out/dataSurvey.csv"
-fpath_y = "movielens-tagnav/r/out/y.csv"
-R_PREDICTIONS_FILE = "movielens-tagnav/r/out/surveyPredictions.csv"
-
 TAG_EMBEDDINGS_DIM = 3
 
 CROSS_ENTROPY_LOSS = "CrossEntropyLoss"
@@ -68,7 +64,6 @@ def get_train_test(frac=0.8):
 
 create_and_save_tags_one_hot_mappings()
 tags_one_hot = load_tags_one_hot_mappings()
-
 
 WORD2VEC_ENCODING = "word2vec"
 ONE_HOT_ENCODING = "one_hot"
@@ -228,6 +223,35 @@ def train(train_data_loader,
     logger.info(f"Save model into {model_path_save}")
     logger.info('Finished Training')
 
+
+def get_model(model_path_load='./out_bin/model.bin'):
+    logger.info(f"Load model from {model_path_load}")
+    return torch.load(model_path_load)
+
+def predict(eval_dataset_loader, model_loaded):
+    model_loaded.eval()
+    predictions = []
+    for i, eval_data in enumerate(eval_dataset_loader):
+        inputs_test, label_test = eval_data
+        outputs_test = model_loaded(inputs_test)
+        predictions.append(outputs_test)
+
+    result = None
+
+    if LOSS == L1_LOSS or LOSS == MSE_LOSS:
+        result = torch.cat(predictions, dim=0)
+    elif LOSS == CROSS_ENTROPY_LOSS or LOSS == BCE_WITH_LOGITS_LOSS:
+        # Put every tensor vector into 2D tensor row
+        result = torch.cat([e.squeeze(0) for e in predictions], 0)
+
+    result_numpy = None
+    if LOSS == L1_LOSS or LOSS == MSE_LOSS:
+        result_numpy = result.detach().numpy()
+        result_numpy = result_numpy * 4.0 + 1.0
+    elif LOSS == CROSS_ENTROPY_LOSS or LOSS == BCE_WITH_LOGITS_LOSS:
+        result_numpy = torch.argmax(result, dim=1).detach()
+        result_numpy = result_numpy + 1.0
+    return pd.DataFrame(result_numpy)
 
 def eval_step(eval_dataset_loader,
               model_path_load='./out_bin/model.bin',
