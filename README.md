@@ -12,7 +12,7 @@ This repository contains data pipeline to run experiments described in [Vig et a
 ## Datasets
 
 * The Tag Genome dataset for movies: https://grouplens.org/datasets/movielens/tag-genome-2021/
-* The Tag Genome dataset for book: https://grouplens.org/datasets/book-genome
+* The Tag Genome dataset for books: https://grouplens.org/datasets/book-genome
 
 ## Usage License
 
