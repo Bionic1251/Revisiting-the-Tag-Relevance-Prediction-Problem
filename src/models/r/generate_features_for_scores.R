@@ -1,5 +1,4 @@
 
-
 generateFeaturesForScores <- function(featureFilePath,
                                 itemIdsFilePath,
                                 surveyFilePath,
@@ -54,8 +53,9 @@ generateFeaturesForScores <- function(featureFilePath,
 	)
 
 	dataUnscaled <- buildDatasetWithFeatures(fullDataset, features, includeUser=FALSE)
+	trainingData = merge(x = dataSurvey[,c("tag", "movieId", "targets")], y = dataUnscaled, by = c("movieId", "tag"), all.x = TRUE)
 	print(paste('dataset is constructed', date()))
-	data <- scaleDataset(dataUnscaled, dataUnscaled, features)
+	data <- scaleDataset(dataUnscaled, trainingData, features)
 	print(paste('dataset is scaled', date()))
 	trainingData = merge(x = dataSurvey[,c("tag", "movieId", "targets")], y = data, by = c("movieId", "tag"), all.x = TRUE)
 	write.table(trainingData, file=outputTrainingFilePath, sep=",", col.names = TRUE, row.names = FALSE, fileEncoding = "utf-8", quote=FALSE)
