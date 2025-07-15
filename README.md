@@ -23,7 +23,7 @@ This work is licensed under the Creative Commons Attribution-NonCommercial 3.0 L
 
 ==============================
 
-## Set up
+## Set up (tested with Python 3.9.6.)
 
 ```
 python -m venv venv
